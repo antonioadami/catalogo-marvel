@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-bar',
@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./AppBar.component.scss']
 })
 export class AppBarComponent {
-  title = 'catalogo-marvel';
+
+  @Output() sidenavToggle = new EventEmitter();
+
+  onToggleSidenav(): void {
+    this.sidenavToggle.emit();
+  }
 }

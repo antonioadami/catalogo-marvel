@@ -3,7 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { AppBarModule } from './components/AppBar/AppBar.module';
+import { SideBarModule } from './components/SideBar/SideBar.module';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +18,10 @@ import { AppBarModule } from './components/AppBar/AppBar.module';
     BrowserModule,
     BrowserAnimationsModule,
 
-    AppBarModule
+    MatSidenavModule,
+
+    AppBarModule,
+    SideBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

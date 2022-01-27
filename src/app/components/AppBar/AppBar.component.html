@@ -1,8 +1,21 @@
-<div class="appbar-container">
-  <img src="assets/images/marvel-logo.png" alt="Marvel logo" class="logo">
-  <button mat-button disableRipple>Personagens</button>
-  <button mat-button disableRipple>Histórias</button>
-  <button mat-button disableRipple>Eventos</button>
-  <button mat-button disableRipple>Séries</button>
-  <button mat-button disableRipple>Criadores</button>
-</div>
+<mat-toolbar class="appbar-container">
+  <div fxHide.gt-xs>
+    <button mat-icon-button (click)="onToggleSidenav()">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+  <div class="logo-container" fxFlex fxLayout fxLayoutAlign.xs="center">
+    <img src="assets/images/marvel-logo.png" alt="Marvel logo" class="logo">
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs>
+    <ul fxLayout fxLayoutGab="15px" class="navigation-items">
+      <li class="menu-list">
+        <a class="menu-item">Personagens</a>
+        <a class="menu-item">Histórias</a>
+        <a class="menu-item">Eventos</a>
+        <a class="menu-item">Séries</a>
+        <a class="menu-item">Criadores</a>
+      </li>
+    </ul>
+  </div>
+</mat-toolbar>

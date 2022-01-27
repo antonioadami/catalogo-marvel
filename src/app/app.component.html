@@ -1,2 +1,11 @@
-<app-bar></app-bar>
 
+<mat-sidenav-container>
+  <mat-sidenav #sidenav role="navigation">
+    <side-bar (sidenavClose)="sidenav.close()"></side-bar>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-bar (sidenavToggle)="sidenav.toggle()"></app-bar>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
