@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router, NavigationEnd } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { CharactersService } from 'src/app/services/characters/characters.service';
+import { ICharacter } from 'src/app/models/ICharacter';
+import { ThumbnailPathTransformer } from 'src/app/utils/thumbnailPathTransformer';
 @Component({
   templateUrl: './Characters.component.html',
   styleUrls: ['./Characters.component.scss']
@@ -10,25 +12,47 @@ import { CharactersService } from 'src/app/services/characters/characters.servic
 export class CharactersComponent implements OnInit {
 
   characterId: number = 0
+  character: ICharacter = {description: '',id: 0,name: '',thumbnail: {extension: '',path:''}, urls: []}
+  thumbnailPathTransformer = ThumbnailPathTransformer
 
   constructor(
-    private router: Router,
-    private charactersService: CharactersService
+    private charactersService: CharactersService,
+    private activatedRoute: ActivatedRoute,
+
     ) {}
 
   ngOnInit(): void {
-    this.router.events.subscribe(
-      (event) => {
-        if(event instanceof NavigationEnd) {
-          this.characterId = parseInt(event.url.split('/')[2]);
-          console.log(this.characterId);
-
+    this.activatedRoute.params
+      .subscribe(params => {
+        this.characterId = params['id'];
+        if(this.characterId) {
           this.charactersService.getCharacterById(this.characterId).subscribe(result => {
-            console.log(result)
+            this.character = result.data.results[0]
+            console.log(this.character)
           })
-
         }
-      });
+
+      })
+  }
+
+  getUrlIcon(type:string) :string {
+    switch(type) {
+      case 'wiki':
+        return 'description';
+        break;
+
+      case 'detail':
+        return 'info';
+        break;
+
+      case 'comiclink':
+        return 'menu_book';
+        break;
+
+      default:
+        return ''
+        break;
+    }
   }
 
 }

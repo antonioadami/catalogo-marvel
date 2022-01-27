@@ -6,11 +6,11 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'characters/1011334',
+    redirectTo: 'characters',
   },
   {
     path: 'characters',
-    children: [
+      children: [
       {
         path: ':id',
         component: CharactersComponent,

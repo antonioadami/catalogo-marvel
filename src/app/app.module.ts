@@ -14,6 +14,7 @@ import { SideBarModule } from './components/SideBar/SideBar.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { CharactersModule } from './Pages/Characters/Characters.module';
 import { SearchingBarModule } from 'src/app/components/SearchingBar/SearchingBar.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SearchingBarModule } from 'src/app/components/SearchingBar/SearchingBar
     AppBarModule,
     SideBarModule,
     CharactersModule,
-    SearchingBarModule
+    SearchingBarModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

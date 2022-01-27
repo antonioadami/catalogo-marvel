@@ -1,4 +1,26 @@
+<div class="page-container">
 
-<div>
+  <div class="d-flex justify-content-start">
+    <div class="character-container marvel-border">
+      <h1>{{character.name}}</h1>
+      <div *ngIf="character.thumbnail.path.length > 0" class="image-container">
+        <img [src]="thumbnailPathTransformer(character.thumbnail)" [alt]="character.name">
+      </div>
+
+      <div class="url-container" *ngFor="let url of character.urls">
+        <mat-icon class="searchIcon">{{getUrlIcon(url.type)}}</mat-icon>
+        <a [href]="url.url">{{url.type}}</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="description-container marvel-border">
+        <h3>Descrição do personagem</h3>
+        <p>{{character.description}}</p>
+      </div>
+    </div>
+
+  </div>
+
 
 </div>

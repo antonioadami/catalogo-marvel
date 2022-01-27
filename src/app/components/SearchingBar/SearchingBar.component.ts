@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 
 import { CharactersService } from 'src/app/services/characters/characters.service';
 
@@ -29,12 +29,15 @@ export class SearchingBarComponent implements OnInit {
     ) {}
 
   ngOnInit() {
-
     this.router.events.subscribe(
       (event) => {
-        if(event instanceof NavigationEnd) {
-          this.url = event.url;
-          this.setData(event.url, 20, 0)
+        if(event instanceof NavigationStart) {
+          const newUrl = event.url.split('/')[1];
+
+          if(newUrl !== this.url) {
+            this.url = newUrl
+            this.setData(this.url, 20, 0)
+          }
         }
       });
 
@@ -47,18 +50,22 @@ export class SearchingBarComponent implements OnInit {
       this.hideSearchMore = false
     }
 
-    if(url.startsWith('/characters')) {
-      this.title = 'Personagens'
-      this.charactersService.getCharacters(limit, offset).subscribe(result => {
-        this.linkList = [
-          ...this.linkList,
-          ...result.data.results.map(character => ({
-            text: character.name,
-            url: `characters/${character.id}`
-          }))
-        ]
-      })
-      return
+    switch(url) {
+      case 'characters':
+        this.title = 'Personagens'
+        this.charactersService.getCharacters(limit, offset).subscribe(result => {
+          this.linkList = [
+            ...this.linkList,
+            ...result.data.results.map(character => ({
+              text: character.name,
+              url: `characters/${character.id}`
+            }))
+          ]
+        })
+        break;
+
+      default:
+        break;
     }
   }
 
@@ -84,22 +91,26 @@ export class SearchingBarComponent implements OnInit {
       return
     }
 
-    if(this.url.startsWith('/characters')) {
-      this.charactersService.getCharactersByName(this.searchString, 20, 20*this.offset).subscribe(result => {
-        if(result.data.results.length === 0) {
-          this.hideSearchMore = true
-          return
-        }
+    switch(this.url) {
+      case 'characters':
+        this.charactersService.getCharactersByName(this.searchString, 20, 20*this.offset).subscribe(result => {
+          if(result.data.results.length === 0) {
+            this.hideSearchMore = true
+            return
+          }
 
-        this.linkList = [
-          ...this.linkList,
-          ...result.data.results.map(character => ({
-            text: character.name,
-            url: `characters/${character.id}`
-          }))
-        ]
-      })
-      return
+          this.linkList = [
+            ...this.linkList,
+            ...result.data.results.map(character => ({
+              text: character.name,
+              url: `characters/${character.id}`
+            }))
+          ]
+        })
+        break;
+
+        default:
+          break;
     }
   }
 }

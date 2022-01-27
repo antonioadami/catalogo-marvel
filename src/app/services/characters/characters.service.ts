@@ -5,7 +5,7 @@ import { environment } from "../../../environments/environment";
 
 import { Observable } from 'rxjs';
 
-import { ICharacter } from "./models/ICharacter";
+import { ICharacter } from "../../models/ICharacter";
 import { IResult } from '../models/IResult';
 
 const API_URL = environment.backEndUrl;
