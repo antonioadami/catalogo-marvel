@@ -1,18 +1,47 @@
 .main-container {
   width: 250px;
-  padding: 24px 12px;
+  padding: 24px 16px;
 
   color: var(--white);
 
   .title {
     font-size: 24px;
     font-weight: 500;
-    margin: 0;
+    margin: 0 0 32px;
+  }
+
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: var(--white);
+  }
+
+  ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: var(--white);
+  }
+
+  ::ng-deep .mat-input-element {
+    caret-color: var(--white);
+  }
+
+  ::ng-deep .mat-form-field-label {
+    color: var(--white);
+  }
+
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--white);
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .searchIcon {
+    cursor: pointer;
   }
 
   .link-list {
     list-style-type: none;
-    margin: 32px 0;
+    margin: 16px 0;
+    padding-left: 8px;
 
     li{
       margin-bottom: 6px;

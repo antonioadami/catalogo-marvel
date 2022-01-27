@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SearchingBarComponent } from './SearchingBar.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
-import { RouterModule } from '@angular/router';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+
+import { SearchingBarComponent } from './SearchingBar.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +23,13 @@ import { RouterModule } from '@angular/router';
 
     FlexLayoutModule,
     RouterModule,
+    FormsModule,
 
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     SearchingBarComponent
