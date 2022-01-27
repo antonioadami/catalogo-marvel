@@ -20,6 +20,9 @@ mat-drawer-content {
   color: var(--white);
 
   padding: 24px;
+
+  overflow-y: hidden;
+  overflow-x: visible;
 }
 
 main {

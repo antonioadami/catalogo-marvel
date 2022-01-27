@@ -25,8 +25,10 @@ export class CharactersComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params
       .subscribe(params => {
-        this.characterId = params['id'];
-        if(this.characterId) {
+        this.characterId = parseInt(params['id']);
+        console.log(this.characterId);
+
+        if(this.characterId !== 0) {
           this.charactersService.getCharacterById(this.characterId).subscribe(result => {
             this.character = result.data.results[0]
             console.log(this.character)

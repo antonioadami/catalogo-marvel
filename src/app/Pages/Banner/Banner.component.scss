@@ -1,0 +1,21 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+
+ h1 {
+   font-size: 60px;
+ }
+ span {
+   font-size: 32px;
+ }
+
+ img {
+   width: calc(100% + 48px);;
+
+   position: absolute;
+   left: -24px;
+   bottom: -230px;
+ }
+}

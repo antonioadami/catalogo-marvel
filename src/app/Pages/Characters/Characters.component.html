@@ -1,6 +1,11 @@
 <div class="page-container">
 
-  <div class="flex-container">
+  <div class="no-character" *ngIf="characterId === 0">
+    <h1>Personagens</h1>
+    <span>Selecione o personagem ao lado</span>
+  </div>
+
+  <div class="flex-container" *ngIf="characterId !== 0">
     <div class="character-container marvel-border">
       <h1>{{character.name}}</h1>
       <div *ngIf="character.thumbnail.path.length > 0" class="image-container">
@@ -19,11 +24,9 @@
     <div>
       <div class="description-container marvel-border">
         <h3>Descrição do personagem</h3>
-        <p>{{character.description}}</p>
+        <p>{{character.description || 'Este personagem não possui descrição'}}</p>
       </div>
     </div>
 
   </div>
-
-
 </div>

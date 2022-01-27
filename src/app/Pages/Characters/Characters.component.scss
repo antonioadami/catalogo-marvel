@@ -2,9 +2,18 @@
   height: 100%;
 }
 
+.no-character {
+  h1 {
+    font-size: 60px;
+  }
+  span {
+    font-size: 32px;
+  }
+}
+
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .character-container {
