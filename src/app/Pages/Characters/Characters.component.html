@@ -1,15 +1,18 @@
 <div class="page-container">
 
-  <div class="d-flex justify-content-start">
+  <div class="flex-container">
     <div class="character-container marvel-border">
       <h1>{{character.name}}</h1>
       <div *ngIf="character.thumbnail.path.length > 0" class="image-container">
         <img [src]="thumbnailPathTransformer(character.thumbnail)" [alt]="character.name">
       </div>
 
-      <div class="url-container" *ngFor="let url of character.urls">
-        <mat-icon class="searchIcon">{{getUrlIcon(url.type)}}</mat-icon>
-        <a [href]="url.url">{{url.type}}</a>
+      <div class="w-100">
+
+        <div class="url-container" *ngFor="let url of character.urls">
+          <mat-icon class="searchIcon">{{getUrlIcon(url.type)}}</mat-icon>
+          <a [href]="url.url">{{url.type}}</a>
+        </div>
       </div>
     </div>
 

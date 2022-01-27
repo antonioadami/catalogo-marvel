@@ -14,6 +14,7 @@ export class CharactersComponent implements OnInit {
   characterId: number = 0
   character: ICharacter = {description: '',id: 0,name: '',thumbnail: {extension: '',path:''}, urls: []}
   thumbnailPathTransformer = ThumbnailPathTransformer
+  location = location
 
   constructor(
     private charactersService: CharactersService,

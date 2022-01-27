@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 import { CharactersComponent } from './Characters.component';
 
@@ -14,7 +15,8 @@ import { CharactersComponent } from './Characters.component';
     CommonModule,
 
     FlexLayoutModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   exports: [
     CharactersComponent
