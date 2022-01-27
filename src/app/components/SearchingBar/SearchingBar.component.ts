@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router, NavigationEnd } from '@angular/router';
+
 import { CharactersService } from 'src/app/services/characters/characters.service';
 
 interface ILink {
@@ -12,7 +14,7 @@ interface ILink {
   templateUrl: './SearchingBar.component.html',
   styleUrls: ['./SearchingBar.component.scss']
 })
-export class SearchingBarComponent {
+export class SearchingBarComponent implements OnInit {
 
   title: string = '';
   linkList: ILink[] = [];
@@ -45,8 +47,7 @@ export class SearchingBarComponent {
       this.hideSearchMore = false
     }
 
-    switch(url) {
-    case '/characters':
+    if(url.startsWith('/characters')) {
       this.title = 'Personagens'
       this.charactersService.getCharacters(limit, offset).subscribe(result => {
         this.linkList = [
@@ -57,11 +58,7 @@ export class SearchingBarComponent {
           }))
         ]
       })
-      break;
-
-    default:
-      this.title = ''
-      break;
+      return
     }
   }
 
@@ -87,28 +84,22 @@ export class SearchingBarComponent {
       return
     }
 
-    switch(this.url) {
-      case '/characters':
-        this.title = 'Personagens'
-        this.charactersService.getCharacterByName(this.searchString, 20, 20*this.offset).subscribe(result => {
-          if(result.data.results.length === 0) {
-            this.hideSearchMore = true
-            return
-          }
+    if(this.url.startsWith('/characters')) {
+      this.charactersService.getCharactersByName(this.searchString, 20, 20*this.offset).subscribe(result => {
+        if(result.data.results.length === 0) {
+          this.hideSearchMore = true
+          return
+        }
 
-          this.linkList = [
-            ...this.linkList,
-            ...result.data.results.map(character => ({
-              text: character.name,
-              url: `characters/${character.id}`
-            }))
-          ]
-        })
-        break;
-
-      default:
-        this.title = ''
-        break;
+        this.linkList = [
+          ...this.linkList,
+          ...result.data.results.map(character => ({
+            text: character.name,
+            url: `characters/${character.id}`
+          }))
+        ]
+      })
+      return
     }
   }
 }

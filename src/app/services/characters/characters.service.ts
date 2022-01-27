@@ -32,10 +32,16 @@ export class CharactersService {
         });
     }
 
-    getCharacterByName(name: string, limit: number, offset: number): Observable<IResult<ICharacter>> {
+    getCharactersByName(name: string, limit: number, offset: number): Observable<IResult<ICharacter>> {
       const params = this.params.append('limit',limit).append('offset',offset).append('nameStartsWith', name)
         return this.http.get <IResult<ICharacter>> (API_URL + '/characters', {
           params
+        });
+    }
+
+    getCharacterById(id: number): Observable<IResult<ICharacter>> {
+        return this.http.get <IResult<ICharacter>> (API_URL + `/characters/${id}`, {
+          params: this.params
         });
     }
 

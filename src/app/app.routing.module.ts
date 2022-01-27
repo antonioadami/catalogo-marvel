@@ -6,14 +6,16 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'characters',
+    redirectTo: 'characters/1011334',
   },
   {
     path: 'characters',
-    component: CharactersComponent,
-    data: {
-      title: 'Personagens',
-    },
+    children: [
+      {
+        path: ':id',
+        component: CharactersComponent,
+      },
+    ],
   },
 ];
 
