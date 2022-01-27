@@ -2,7 +2,7 @@ import {IThumbnail} from "../../models/IThumbnail"
 
 export interface ICharacter {
     id: number,
-    title: string,
+    name: string,
     description: string,
     thumbnail: IThumbnail
 }

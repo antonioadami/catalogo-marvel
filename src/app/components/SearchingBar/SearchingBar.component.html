@@ -1,0 +1,12 @@
+<div class="main-container">
+  <h3 class="title">{{title}}</h3>
+
+  <ul class="link-list">
+    <li *ngFor="let link of linkList">
+      <a [routerLink]="link.url">{{link.text}}</a>
+    </li>
+    <li>
+      <a (click)="searchMore()">Buscar mais</a>
+    </li>
+  </ul>
+</div>

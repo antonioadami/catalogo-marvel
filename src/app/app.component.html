@@ -4,8 +4,20 @@
     <side-bar (sidenavClose)="sidenav.close()"></side-bar>
 
   </mat-sidenav>
+
   <mat-sidenav-content>
     <app-bar (sidenavToggle)="sidenav.toggle()"></app-bar>
-    <router-outlet></router-outlet>
+
+    <mat-drawer-container>
+      <mat-drawer mode="side" opened>
+        <searching-bar></searching-bar>
+      </mat-drawer>
+
+      <mat-drawer-content>
+        <div>teste</div>
+        <router-outlet></router-outlet>
+      </mat-drawer-content>
+    </mat-drawer-container>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
