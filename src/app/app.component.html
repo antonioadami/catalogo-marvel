@@ -8,12 +8,15 @@
   <mat-sidenav-content>
     <app-bar (sidenavToggle)="sidenav.toggle()"></app-bar>
 
-    <mat-drawer-container>
-      <mat-drawer mode="side" opened>
+    <mat-drawer-container >
+      <mat-drawer (closedStart)="openDrawer = false" [opened]="!mobile || openDrawer" [mode]="mobile ? 'over' : 'side'" >
         <searching-bar></searching-bar>
       </mat-drawer>
 
       <mat-drawer-content>
+        <div class="buscar-outro" *ngIf="mobile">
+          <button mat-button (click)="openDrawer = true">BUSCAR OUTRO</button>
+        </div>
         <router-outlet></router-outlet>
       </mat-drawer-content>
     </mat-drawer-container>
