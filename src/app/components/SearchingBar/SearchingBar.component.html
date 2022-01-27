@@ -1,7 +1,7 @@
 <div class="main-container">
   <h3 class="title">{{title}}</h3>
 
-  <mat-form-field appearance="outline">
+  <mat-form-field appearance="outline" *ngIf="!hideInput">
     <mat-label>Pesquisar</mat-label>
     <input matInput  [(ngModel)]="searchString">
     <mat-icon matSuffix (click)="searchByName()" class="searchIcon">search</mat-icon>

@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BannerComponent } from './Pages/Banner/Banner.component';
 import { CharactersComponent } from './Pages/Characters/Characters.component';
+import { ErroComponent } from './Pages/Erro/Erro.component';
 
 const routes: Routes = [
+
   {
     path: '',
-    pathMatch: 'full',
     component: BannerComponent,
   },
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
         component: CharactersComponent,
       },
     ],
+  },
+  {
+    path: '**',
+    component: ErroComponent,
   },
 ];
 

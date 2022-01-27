@@ -19,9 +19,10 @@ export class SearchingBarComponent implements OnInit {
   title: string = '';
   linkList: ILink[] = [];
   offset: number = 0;
-  url: string = '/'
-  searchString = ""
-  hideSearchMore = false
+  url: string = '/';
+  searchString = "";
+  hideSearchMore = false;
+  hideInput = false;
 
   constructor(
     private router: Router,
@@ -35,8 +36,8 @@ export class SearchingBarComponent implements OnInit {
           const newUrl = event.url.split('/')[1];
 
           if(newUrl !== this.url) {
-            this.url = newUrl
-            this.setData(this.url, 20, 0)
+            this.url = newUrl;
+            this.setData(this.url, 20, 0);
           }
         }
       });
@@ -47,7 +48,7 @@ export class SearchingBarComponent implements OnInit {
     this.searchString = ''
 
     if(this.offset === 0) {
-      this.hideSearchMore = false
+      this.hideSearchMore = false;
     }
 
     switch(url) {
@@ -65,6 +66,10 @@ export class SearchingBarComponent implements OnInit {
         break;
 
       default:
+        this.title = "Selecione uma página"
+        this.hideSearchMore = true;
+        this.hideInput = true;
+        this.linkList = []
         break;
     }
   }
