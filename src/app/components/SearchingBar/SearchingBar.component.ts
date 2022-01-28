@@ -46,6 +46,7 @@ export class SearchingBarComponent implements OnInit {
 
   setData(url: string, limit: number, offset: number) {
     this.searchString = ''
+    this.hideInput = true
 
     if(this.offset === 0) {
       this.hideSearchMore = false;
